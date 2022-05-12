@@ -8,7 +8,6 @@ def get_titanic_data():
 
     if os.path.isfile(filename):
         return pd.read_csv(filename)
-
     else:
         df = pd.read_sql(
             '''
@@ -17,7 +16,7 @@ def get_titanic_data():
             get_db_url('titanic_db')
         )
 
-        df.to_file(filename)
+        df.to_csv(filename)
 
         return df
 
@@ -27,7 +26,6 @@ def get_iris_data():
 
     if os.path.isfile(filename):
         return pd.read_csv(filename)
-
     else:
         df = pd.read_sql(
             '''
@@ -36,7 +34,7 @@ def get_iris_data():
             get_db_url('iris_db')
         )
 
-        df.to_file(filename)
+        df.to_csv(filename)
 
         return df
 
@@ -46,7 +44,6 @@ def get_telco_data():
 
     if os.path.isfile(filename):
         return pd.read_csv(filename)
-
     else:
         df = pd.read_sql(
             '''
@@ -59,7 +56,7 @@ def get_telco_data():
             get_db_url('telco_churn')
         )
 
-        df.to_file(filename)
+        df.to_csv(filename)
 
         return df
 
