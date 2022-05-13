@@ -7,7 +7,7 @@ def get_titanic_data():
     filename = 'titanic_data.csv'
 
     if os.path.isfile(filename):
-        return pd.read_csv(filename)
+        return pd.read_csv(filename, index_col=0)
     else:
         df = pd.read_sql(
             '''
@@ -25,11 +25,11 @@ def get_iris_data():
     filename = 'iris_data.csv'
 
     if os.path.isfile(filename):
-        return pd.read_csv(filename)
+        return pd.read_csv(filename, index_col=0)
     else:
         df = pd.read_sql(
             '''
-            SELECT * FROM species
+            SELECT * FROM species JOIN measurements USING(species_id);
             ''',
             get_db_url('iris_db')
         )
@@ -43,7 +43,7 @@ def get_telco_data():
     filename = 'telco_churn_data.csv'
 
     if os.path.isfile(filename):
-        return pd.read_csv(filename)
+        return pd.read_csv(filename, index_col=0)
     else:
         df = pd.read_sql(
             '''
