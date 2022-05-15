@@ -6,6 +6,6 @@ def splitter(df, target, train_split_1 = .8, train_split_2 = .7, random_state = 
     
     train, test = train_test_split(df, train_size = train_split_1, random_state = random_state, stratify = df[target])
     
-    train, validate = train_test_split(train, train_size = train_split_2, random_state = random_state, stratify = df[target])
+    train, validate = train_test_split(train, train_size = train_split_2, random_state = random_state, stratify = train[target])
 
     return train, validate, test
