@@ -20,10 +20,10 @@ def prep_iris(df):
     dummy_df = pd.get_dummies(df[['species']], drop_first = True)
     df = pd.concat([df, dummy_df], axis=1)
 
-    train, validate, test = split_iris_data(df)
+    # train, validate, test = split_iris_data(df)
     
-    return train, validate, test
-
+    # return train, validate, test
+    return df
 #-------------------------------------------------------------------------
 
 #Titanic
@@ -41,11 +41,14 @@ def prep_titanic(df):
     columns_to_drop = ['passenger_id','deck','class','embarked']
     df = df.drop(columns = columns_to_drop).rename(columns={'sibsp': 'Siblings/Spouses','parch':'Parents/Children'})
     dummy_df = pd.get_dummies(df[['sex', 'embark_town']], dummy_na=False, drop_first=True)
+    df = df.drop(columns = ['sex','embark_town'])
     df = pd.concat([df, dummy_df], axis=1)
 
-    train, validate, test = split_titanic_data(df)
+    # train, validate, test = split_titanic_data(df)
 
-    return train, validate, test
+    # return train, validate, test
+    return df
+
 
 #-------------------------------------------------------------------------
 
@@ -88,6 +91,8 @@ def prep_telco(df):
                               drop_first=True)
     df = pd.concat([df, dummy_df], axis=1)
     
-    train, validate, test = split_telco_data(df)
+    # train, validate, test = split_telco_data(df)
 
-    return train, validate, test
+    # return train, validate, test
+
+    return df
